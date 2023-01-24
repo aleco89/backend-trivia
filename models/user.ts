@@ -9,7 +9,7 @@ interface UserAttributes {
   email: string;
   password: string;
   totalScore: number;
-  trivias_answered: number;
+  triviasAnswered: number;
   avatar: string;
 }
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
@@ -36,7 +36,7 @@ class User
   @Column
   totalScore: number;
   @Column
-  trivias_answered: number;
+  triviasAnswered: number;
   @Column
   avatar: string;
 }

@@ -1,0 +1,40 @@
+'use strict';
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('triviaAnswereds', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      score: {
+        type: Sequelize.NUMBER
+      },
+      correctAnserws: {
+        type: Sequelize.NUMBER
+      },
+      incorrectAnswers: {
+        type: Sequelize.NUMBER
+      },
+      userId: {
+        type: Sequelize.NUMBER
+      },
+      triviaId: {
+        type: Sequelize.NUMBER
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('triviaAnswereds');
+  }
+};

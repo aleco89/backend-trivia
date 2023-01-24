@@ -1,0 +1,11 @@
+{
+  "local": {
+    "username": "root",
+    "password": "",
+    "database": "Trivia-Db",
+    "host": "localhost",
+    "dialect": "mysql",
+    "serverUrl": "http://localhost",
+    "port": 3306
+  }
+}

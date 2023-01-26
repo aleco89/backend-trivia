@@ -1,6 +1,14 @@
 "use strict";
 import { Optional } from "sequelize";
-import { Table, Column, Model, PrimaryKey } from "sequelize-typescript";
+import {
+  Table,
+  Column,
+  Model,
+  PrimaryKey,
+  ForeignKey,
+  BelongsTo,
+} from "sequelize-typescript";
+import Question from "./question";
 
 interface AnswerAttributes {
   id: number;
@@ -21,12 +29,18 @@ class Answer
     autoIncrement: true,
   })
   id: number;
+
   @Column
   answer: string;
+
   @Column
   isCorrect: boolean;
+
+  @ForeignKey(() => Question)
   @Column
   questionId: number;
+  @BelongsTo(() => Question)
+  question: Question;
 }
 
 export default Answer;

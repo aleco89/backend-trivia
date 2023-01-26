@@ -18,9 +18,10 @@ module.exports = {
       questionQuantity: {
         type: Sequelize.NUMBER,
       },
+      /*
       categoryId: {
         type: Sequelize.NUMBER,
-      },
+      },*/
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -29,6 +30,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+    });
+    await queryInterface.addColumn("trivia", "categoryId", {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: { model: "category", key: "id" },
     });
   },
   async down(queryInterface, Sequelize) {

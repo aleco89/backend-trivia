@@ -11,7 +11,9 @@ interface UserAttributes {
   totalScore: number;
   triviasAnswered: number;
   avatar: string;
+  admin: boolean;
 }
+
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
 
 @Table
@@ -39,6 +41,8 @@ class User
   triviasAnswered: number;
   @Column
   avatar: string;
+  @Column
+  admin: boolean;
 }
 
 export default User;

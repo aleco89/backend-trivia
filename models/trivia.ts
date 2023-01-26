@@ -1,6 +1,14 @@
 "use strict";
 import { Optional } from "sequelize";
-import { Table, Column, Model, PrimaryKey } from "sequelize-typescript";
+import {
+  Table,
+  Column,
+  Model,
+  PrimaryKey,
+  BelongsTo,
+  ForeignKey,
+} from "sequelize-typescript";
+import Category from "./category";
 
 interface TriviaAttributes {
   id: number;
@@ -22,14 +30,21 @@ class Trivia
     autoIncrement: true,
   })
   id: number;
+
   @Column
   title: string;
+
   @Column
   description: string;
+
   @Column
   questionQuantity: number;
+
+  @ForeignKey(() => Category)
   @Column
   CategoryId: number;
+  @BelongsTo(() => Category)
+  category: Category;
 }
 
 export default Trivia;

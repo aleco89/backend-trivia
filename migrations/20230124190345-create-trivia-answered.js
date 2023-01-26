@@ -1,40 +1,50 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('triviaAnswereds', {
+    await queryInterface.createTable("triviaAnswereds", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       score: {
-        type: Sequelize.NUMBER
+        type: Sequelize.NUMBER,
       },
       correctAnserws: {
-        type: Sequelize.NUMBER
+        type: Sequelize.NUMBER,
       },
       incorrectAnswers: {
-        type: Sequelize.NUMBER
-      },
+        type: Sequelize.NUMBER,
+      } /*
       userId: {
         type: Sequelize.NUMBER
       },
       triviaId: {
         type: Sequelize.NUMBER
-      },
+      },*/,
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
+    });
+    await queryInterface.addColumn("triviaAnswereds", "userId", {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: { model: "user", key: "id" },
+    });
+    await queryInterface.addColumn("triviaAnswereds", "triviaId", {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: { model: "trivia", key: "id" },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('triviaAnswereds');
-  }
+    await queryInterface.dropTable("triviaAnswereds");
+  },
 };

@@ -22,16 +22,16 @@ module.exports = {
         type: Sequelize.STRING,
       },
       totalScore: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       trivias_answered: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       avatar: {
         type: Sequelize.STRING,
       },
       admin: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.TINYINT(1),
       },
       createdAt: {
         allowNull: false,

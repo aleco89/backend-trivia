@@ -10,13 +10,13 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       score: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       correctAnserws: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       incorrectAnswers: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       } /*
       userId: {
         type: Sequelize.NUMBER

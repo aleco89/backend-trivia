@@ -1,6 +1,13 @@
 "use strict";
 import { Optional } from "sequelize";
-import { Table, Column, Model, PrimaryKey } from "sequelize-typescript";
+import {
+  Table,
+  Column,
+  Model,
+  PrimaryKey,
+  HasMany,
+} from "sequelize-typescript";
+import TriviaAnswered from "./triviaanswered";
 
 interface UserAttributes {
   id: number;
@@ -12,6 +19,7 @@ interface UserAttributes {
   triviasAnswered: number;
   avatar: string;
   admin: boolean;
+  triviaAnswered?: TriviaAnswered[];
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
@@ -43,16 +51,9 @@ class User
   avatar: string;
   @Column
   admin: boolean;
+
+  @HasMany(() => TriviaAnswered)
+  triviaAnswered: TriviaAnswered[];
 }
 
 export default User;
-
-/*
-firstName: DataTypes.STRING,
-      lastName: DataTypes.STRING,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
-      score: DataTypes.NUMBER,
-      trivias_answered: DataTypes.NUMBER,
-      avatar: DataTypes.STRING,
-*/

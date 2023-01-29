@@ -7,8 +7,11 @@ import {
   PrimaryKey,
   BelongsTo,
   ForeignKey,
+  HasMany,
 } from "sequelize-typescript";
 import Category from "./category";
+import Question from "./question";
+import TriviaAnswered from "./triviaanswered";
 
 interface TriviaAttributes {
   id: number;
@@ -16,6 +19,8 @@ interface TriviaAttributes {
   description: string;
   questionQuantity: number;
   CategoryId: number;
+  questions?: Question[];
+  triviaAnswered?: TriviaAnswered[];
 }
 interface TriviaCreationAttributes extends Optional<TriviaAttributes, "id"> {}
 
@@ -45,6 +50,11 @@ class Trivia
   CategoryId: number;
   @BelongsTo(() => Category)
   category: Category;
+
+  @HasMany(() => Question)
+  questions: Question[];
+  @HasMany(() => TriviaAnswered)
+  triviaAnswered: TriviaAnswered[];
 }
 
 export default Trivia;

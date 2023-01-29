@@ -1,10 +1,18 @@
 "use strict";
 import { Optional } from "sequelize";
-import { Table, Column, Model, PrimaryKey } from "sequelize-typescript";
+import {
+  Table,
+  Column,
+  Model,
+  PrimaryKey,
+  HasMany,
+} from "sequelize-typescript";
+import Trivia from "./trivia";
 
 interface CategoryAttributes {
   id: number;
   name: string;
+  trivias?: Trivia[];
 }
 interface CategoryCreationAttributes
   extends Optional<CategoryAttributes, "id"> {}
@@ -22,6 +30,9 @@ class Category
   id: number;
   @Column
   name: string;
+
+  @HasMany(() => Trivia)
+  trivias: Trivia[];
 }
 
 export default Category;

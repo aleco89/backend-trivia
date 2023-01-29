@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       question: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(150),
       } /*
       triviaId: {
         type: Sequelize.NUMBER

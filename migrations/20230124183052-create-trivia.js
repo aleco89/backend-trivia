@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       questionQuantity: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       /*
       categoryId: {

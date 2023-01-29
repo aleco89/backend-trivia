@@ -10,10 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       answer: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(200),
       },
       isCorrect: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.TINYINT(1),
       },
       /*
       questionId: {

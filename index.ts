@@ -1,17 +1,14 @@
 import express from "express";
-import trivia from "./models/trivia";
+import cors from "cors";
+import sequelize from "./config/sequelize";
+import appRouter from "./routes";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
-type Trivia = {
-  id: number;
-  title: string;
-  description: string;
-  questionQuantity: number;
-  CategoryId: number;
-};
+app.use("/api", appRouter);
 /*
 app.get("/home", async (req, res) => {
     const trivias:Trivia = await trivia.findAndCountAll({
@@ -25,4 +22,8 @@ app.get //validacion pregunta
 
 */
 
-app.listen(3000);
+app.listen(3000, async () => {
+  await sequelize.authenticate();
+  await sequelize.sync({ force: true });
+  console.log("DB connected and app listen");
+});

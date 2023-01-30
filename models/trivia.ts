@@ -11,14 +11,16 @@ import {
 } from "sequelize-typescript";
 import Category from "./category";
 import Question from "./question";
-import TriviaAnswered from "./triviaanswered";
+import TriviaAnswered from "./triviasanswered";
+import CategroyCreationAttributes from "./triviasanswered";
 
 interface TriviaAttributes {
   id: number;
   title: string;
   description: string;
   questionQuantity: number;
-  CategoryId: number;
+  categoryId: number;
+  category?: CategroyCreationAttributes;
   questions?: Question[];
   triviaAnswered?: TriviaAnswered[];
 }
@@ -47,9 +49,9 @@ class Trivia
 
   @ForeignKey(() => Category)
   @Column
-  CategoryId: number;
+  categoryId: number;
   @BelongsTo(() => Category)
-  category: Category;
+  categ: Category;
 
   @HasMany(() => Question)
   questions: Question[];

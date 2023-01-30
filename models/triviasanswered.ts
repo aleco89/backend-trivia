@@ -11,7 +11,7 @@ import {
 import Trivia from "./trivia";
 import User from "./user";
 
-interface TriviaAnsweredAttributes {
+interface TriviasAnsweredAttributes {
   id: number;
   score: number;
   correctAnswers: number;
@@ -19,13 +19,13 @@ interface TriviaAnsweredAttributes {
   userId: number;
   triviaId: number;
 }
-interface TriviaCreationAttributes
-  extends Optional<TriviaAnsweredAttributes, "id"> {}
+interface TriviasAnsweredCreationAttributes
+  extends Optional<TriviasAnsweredAttributes, "id"> {}
 
 @Table
-class TriviaAnswered
-  extends Model<TriviaAnsweredAttributes, TriviaCreationAttributes>
-  implements TriviaAnsweredAttributes
+class TriviasAnswered
+  extends Model<TriviasAnsweredAttributes, TriviasAnsweredCreationAttributes>
+  implements TriviasAnsweredAttributes
 {
   @PrimaryKey
   @Column({
@@ -56,4 +56,4 @@ class TriviaAnswered
   trivia: Trivia;
 }
 
-export default TriviaAnswered;
+export default TriviasAnswered;

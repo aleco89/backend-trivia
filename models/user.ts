@@ -7,7 +7,7 @@ import {
   PrimaryKey,
   HasMany,
 } from "sequelize-typescript";
-import TriviaAnswered from "./triviaanswered";
+import TriviasAnswered from "./triviasanswered";
 
 interface UserAttributes {
   id: number;
@@ -16,10 +16,11 @@ interface UserAttributes {
   email: string;
   password: string;
   totalScore: number;
-  triviasAnswered: number;
+  triviasSolved: number;
   avatar: string;
   admin: boolean;
-  triviaAnswered?: TriviaAnswered[];
+  triviasAnswered?: TriviasAnswered[];
+  //triviaAnswered:TriviaAnswerCreationAtributes
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
@@ -46,14 +47,14 @@ class User
   @Column
   totalScore: number;
   @Column
-  triviasAnswered: number;
+  triviasSolved: number;
   @Column
   avatar: string;
   @Column
   admin: boolean;
 
-  @HasMany(() => TriviaAnswered)
-  triviaAnswered: TriviaAnswered[];
+  @HasMany(() => TriviasAnswered)
+  triviasAnswered: TriviasAnswered[];
 }
 
 export default User;

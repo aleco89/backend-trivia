@@ -1,24 +1,18 @@
 "use strict";
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("answers", {
+    await queryInterface.createTable("questions", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      answer: {
-        type: Sequelize.STRING(200),
+      question: {
+        type: Sequelize.STRING(150),
       },
-      isCorrect: {
-        type: Sequelize.TINYINT(1),
-      },
-      /*
-      questionId: {
-        type: Sequelize.NUMBER
-      },*/
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -28,13 +22,14 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
-    await queryInterface.addColumn("answers", "questionId", {
+    await queryInterface.addColumn("questions", "triviaId", {
       type: Sequelize.INTEGER,
       allowNull: false,
-      references: { model: "question", key: "id" },
+      references: { model: "trivias", key: "id" },
     });
   },
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("answers");
+    await queryInterface.dropTable("questions");
   },
 };

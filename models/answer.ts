@@ -9,12 +9,14 @@ import {
   BelongsTo,
 } from "sequelize-typescript";
 import Question from "./question";
+import QuestionCreationAttributes from "./question";
 
 interface AnswerAttributes {
   id: number;
   answer: string;
   isCorrect: boolean;
   questionId: number;
+  question?: QuestionCreationAttributes;
 }
 interface AnswerCreationAttributes extends Optional<AnswerAttributes, "id"> {}
 

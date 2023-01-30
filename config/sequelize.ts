@@ -5,7 +5,7 @@ import Answer from "../models/answer";
 import Category from "../models/category";
 import Question from "../models/question";
 import Trivia from "../models/trivia";
-import TriviaAnswered from "../models/triviaanswered";
+import TriviaAnswered from "../models/triviasanswered";
 
 const local = config.local;
 

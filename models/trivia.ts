@@ -22,7 +22,6 @@ interface TriviaAttributes {
   categoryId: number;
   category?: CategroyCreationAttributes;
   questions?: Question[];
-  triviaAnswered?: TriviaAnswered[];
 }
 interface TriviaCreationAttributes extends Optional<TriviaAttributes, "id"> {}
 

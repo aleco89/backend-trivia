@@ -21,9 +21,7 @@ JSon to create trivia:
     "title": "Nombre de una trivia",
     "description": "string",
     "questionQuantity": "3",
-    "category": {
-                    "category": "ciencia",
-    },
+    "category": id,
     "questions":[{
                     "question": "pregunta 1",
                     "answers": [{
@@ -75,3 +73,4 @@ interface QuestionAttributes {
   answers?: Answer[];
 }
 */
+export default createTrivia;

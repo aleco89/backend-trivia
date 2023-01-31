@@ -5,8 +5,8 @@ import getCategoryById from "../controllers/categoryController/getCategoryById";
 
 const categoryRouter = Router();
 
-categoryRouter.use("/new", createCategory);
-categoryRouter.use("/getAll", getAllCategories);
-categoryRouter.use("/getById", getCategoryById);
+categoryRouter.use("/", createCategory);
+categoryRouter.use("/", getAllCategories);
+categoryRouter.use("/:Id", getCategoryById);
 
 export default categoryRouter;

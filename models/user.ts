@@ -25,7 +25,9 @@ interface UserAttributes {
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
 
-@Table
+@Table({
+  tableName: "users",
+})
 class User
   extends Model<UserAttributes, UserCreationAttributes>
   implements UserAttributes
@@ -36,13 +38,21 @@ class User
     autoIncrement: true,
   })
   id: number;
-  @Column
+  @Column({
+    allowNull: false,
+  })
   firstName: string;
-  @Column
+  @Column({
+    allowNull: false,
+  })
   lastName: string;
-  @Column
+  @Column({
+    allowNull: false,
+  })
   email: string;
-  @Column
+  @Column({
+    allowNull: false,
+  })
   password: string;
   @Column
   totalScore: number;

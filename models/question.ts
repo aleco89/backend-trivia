@@ -23,7 +23,9 @@ interface QuestionAttributes {
 interface QuestionCreationAttributes
   extends Optional<QuestionAttributes, "id"> {}
 
-@Table
+@Table({
+  tableName: "questions",
+})
 class Question
   extends Model<QuestionAttributes, QuestionCreationAttributes>
   implements QuestionAttributes
@@ -35,7 +37,9 @@ class Question
   })
   id: number;
 
-  @Column
+  @Column({
+    allowNull: false,
+  })
   question: string;
 
   @ForeignKey(() => Trivia)

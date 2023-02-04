@@ -17,7 +17,9 @@ interface CategoryAttributes {
 interface CategoryCreationAttributes
   extends Optional<CategoryAttributes, "id"> {}
 
-@Table
+@Table({
+  tableName: "categories",
+})
 class Category
   extends Model<CategoryAttributes, CategoryCreationAttributes>
   implements CategoryAttributes
@@ -28,7 +30,9 @@ class Category
     autoIncrement: true,
   })
   id: number;
-  @Column
+  @Column({
+    allowNull: false,
+  })
   name: string;
 
   @HasMany(() => Trivia)

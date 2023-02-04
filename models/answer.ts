@@ -20,7 +20,9 @@ interface AnswerAttributes {
 }
 interface AnswerCreationAttributes extends Optional<AnswerAttributes, "id"> {}
 
-@Table
+@Table({
+  tableName: "answers",
+})
 class Answer
   extends Model<AnswerAttributes, AnswerCreationAttributes>
   implements AnswerAttributes

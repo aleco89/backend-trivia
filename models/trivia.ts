@@ -25,7 +25,9 @@ interface TriviaAttributes {
 }
 interface TriviaCreationAttributes extends Optional<TriviaAttributes, "id"> {}
 
-@Table
+@Table({
+  tableName: "trivias",
+})
 class Trivia
   extends Model<TriviaAttributes, TriviaCreationAttributes>
   implements TriviaAttributes
@@ -37,13 +39,17 @@ class Trivia
   })
   id: number;
 
-  @Column
+  @Column({
+    allowNull: false,
+  })
   title: string;
 
   @Column
   description: string;
 
-  @Column
+  @Column({
+    allowNull: false,
+  })
   questionQuantity: number;
 
   @ForeignKey(() => Category)

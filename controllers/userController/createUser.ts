@@ -2,6 +2,8 @@ import { RequestHandler } from "express";
 import User from "../../models/user";
 import UserCreationAttributes from "../../models/user";
 
+//endpoint provisorio
+
 const createUser: RequestHandler = async (req, res) => {
   try {
     const userAttributes = req.body as UserCreationAttributes;
@@ -11,3 +13,5 @@ const createUser: RequestHandler = async (req, res) => {
     return res.status(400).json(err);
   }
 };
+
+export default createUser;

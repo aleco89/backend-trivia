@@ -11,6 +11,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       question: {
+        allowNull: false,
         type: Sequelize.STRING(150),
       },
       createdAt: {

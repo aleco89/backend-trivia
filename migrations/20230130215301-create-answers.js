@@ -11,9 +11,11 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       answer: {
+        allowNull: false,
         type: Sequelize.STRING(200),
       },
       isCorrect: {
+        allowNull: false,
         type: Sequelize.TINYINT(1),
       },
       createdAt: {

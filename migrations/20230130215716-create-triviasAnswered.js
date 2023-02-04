@@ -11,12 +11,15 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       score: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       correctAnserws: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       incorrectAnswers: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       createdAt: {

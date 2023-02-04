@@ -22,7 +22,9 @@ interface TriviasAnsweredAttributes {
 interface TriviasAnsweredCreationAttributes
   extends Optional<TriviasAnsweredAttributes, "id"> {}
 
-@Table
+@Table({
+  tableName: "triviasAnswered",
+})
 class TriviasAnswered
   extends Model<TriviasAnsweredAttributes, TriviasAnsweredCreationAttributes>
   implements TriviasAnsweredAttributes
@@ -34,13 +36,19 @@ class TriviasAnswered
   })
   id: number;
 
-  @Column
+  @Column({
+    allowNull: false,
+  })
   score: number;
 
-  @Column
+  @Column({
+    allowNull: false,
+  })
   correctAnswers: number;
 
-  @Column
+  @Column({
+    allowNull: false,
+  })
   incorrectAnswers: number;
 
   @ForeignKey(() => User)

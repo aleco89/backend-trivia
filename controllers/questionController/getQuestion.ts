@@ -7,7 +7,7 @@ const getQuestion: RequestHandler = async (req, res) => {
     const id = req.params.id;
     const questions = await Question.findAll({
       where: { triviaId: id },
-      include: [{ model: Answer, attributes: ["answer"] }],
+      include: [{ model: Answer, attributes: ["id", "answer"] }],
     });
     return res.status(200).json(questions);
   } catch (err) {

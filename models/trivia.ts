@@ -12,7 +12,6 @@ import {
 import Category from "./category";
 import Question from "./question";
 import TriviaAnswered from "./triviasanswered";
-import CategroyCreationAttributes from "./triviasanswered";
 
 interface TriviaAttributes {
   id: number;
@@ -20,8 +19,8 @@ interface TriviaAttributes {
   description: string;
   questionQuantity: number;
   categoryId: number;
-  category?: CategroyCreationAttributes;
   questions?: Question[];
+  triviasAnswered?: TriviaAnswered[];
 }
 interface TriviaCreationAttributes extends Optional<TriviaAttributes, "id"> {}
 
@@ -56,12 +55,12 @@ class Trivia
   @Column
   categoryId: number;
   @BelongsTo(() => Category)
-  categ: Category;
+  category: Category;
 
   @HasMany(() => Question)
   questions: Question[];
   @HasMany(() => TriviaAnswered)
-  triviaAnswered: TriviaAnswered[];
+  triviasAnswered: TriviaAnswered[];
 }
 
 export default Trivia;

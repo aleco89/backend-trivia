@@ -10,4 +10,8 @@ const getAllCategories: RequestHandler = async (req, res) => {
   }
 };
 
+/*
+  Funcionando OK!
+*/
+
 export default getAllCategories;

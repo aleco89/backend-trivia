@@ -14,12 +14,7 @@ const createCategory: RequestHandler = async (req, res) => {
   }
 };
 /*
-({
-  where: { username: 'sdepold' },
-  defaults: {
-    job: 'Technical Lead JavaScript'
-  }
-});
+  Funcionando OK!
 */
 
 export default createCategory;

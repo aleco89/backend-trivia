@@ -1,10 +1,10 @@
 import { RequestHandler } from "express";
-import Category from "../../models/category";
+import Trivia from "../../models/trivia";
 
-const deleteCategory: RequestHandler = async (req, res) => {
+const deleteTrivia: RequestHandler = async (req, res) => {
   try {
     const id = Number(req.params.id);
-    await Category.destroy({
+    await Trivia.destroy({
       where: {
         id: id,
       },
@@ -14,4 +14,4 @@ const deleteCategory: RequestHandler = async (req, res) => {
   }
 };
 
-export default deleteCategory;
+export default deleteTrivia;

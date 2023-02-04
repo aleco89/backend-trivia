@@ -11,13 +11,11 @@ import {
 } from "sequelize-typescript";
 import Trivia from "./trivia";
 import Answer from "./answer";
-import TriviaCreationAttributes from "./trivia";
 
 interface QuestionAttributes {
   id: number;
   question: string;
   triviaId: number;
-  trivia?: TriviaCreationAttributes;
   answers?: Answer[];
 }
 interface QuestionCreationAttributes

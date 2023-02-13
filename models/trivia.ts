@@ -11,16 +11,15 @@ import {
 } from "sequelize-typescript";
 import Category from "./category";
 import Question from "./question";
-import TriviaAnswered from "./triviasanswered";
 
 interface TriviaAttributes {
   id: number;
   title: string;
   description: string;
-  questionQuantity: number;
+  questionQuantity?: number;
   categoryId: number;
+  published: boolean;
   questions?: Question[];
-  triviasAnswered?: TriviaAnswered[];
 }
 interface TriviaCreationAttributes extends Optional<TriviaAttributes, "id"> {}
 
@@ -51,16 +50,19 @@ class Trivia
   })
   questionQuantity: number;
 
+  @Column({
+    allowNull: false,
+  })
+  published: boolean;
+
   @ForeignKey(() => Category)
   @Column
   categoryId: number;
   @BelongsTo(() => Category)
   category: Category;
 
-  @HasMany(() => Question)
+  @HasMany(() => Question, { onDelete: "cascade" })
   questions: Question[];
-  @HasMany(() => TriviaAnswered)
-  triviasAnswered: TriviaAnswered[];
 }
 
 export default Trivia;

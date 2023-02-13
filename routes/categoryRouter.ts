@@ -7,7 +7,7 @@ import deleteCategory from "../controllers/categoryController/deleteCategory";
 const categoryRouter = Router();
 
 categoryRouter.use("/new", createCategory);
-categoryRouter.use("/", getAllCategories);
 categoryRouter.use("/:id", getCategoryById, deleteCategory);
+categoryRouter.use("/", getAllCategories);
 
 export default categoryRouter;

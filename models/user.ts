@@ -19,7 +19,7 @@ interface UserAttributes {
   triviasSolved: number;
   avatar: string;
   admin: boolean;
-  usersAnswers: UsersAnswers[];
+  usersAnswers?: UsersAnswers[];
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}

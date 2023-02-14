@@ -8,26 +8,23 @@ import {
   ForeignKey,
   BelongsTo,
 } from "sequelize-typescript";
-import Trivia from "./trivia";
+import Answer from "./answer";
 import User from "./user";
 
-interface TriviasAnsweredAttributes {
+interface UsersAnswersAttributes {
   id: number;
-  score: number;
-  correctAnswers: number;
-  incorrectAnswers: number;
   userId: number;
-  triviaId: number;
+  answerId: number;
 }
-interface TriviasAnsweredCreationAttributes
-  extends Optional<TriviasAnsweredAttributes, "id"> {}
+interface UsersAnswersCreationAttributes
+  extends Optional<UsersAnswersAttributes, "id"> {}
 
 @Table({
-  tableName: "triviasAnswered",
+  tableName: "usersResponses",
 })
-class TriviasAnswered
-  extends Model<TriviasAnsweredAttributes, TriviasAnsweredCreationAttributes>
-  implements TriviasAnsweredAttributes
+class UsersAnswers
+  extends Model<UsersAnswersAttributes, UsersAnswersCreationAttributes>
+  implements UsersAnswersAttributes
 {
   @PrimaryKey
   @Column({
@@ -57,11 +54,11 @@ class TriviasAnswered
   @BelongsTo(() => User)
   user: User;
 
-  @ForeignKey(() => Trivia)
+  @ForeignKey(() => Answer)
   @Column
-  triviaId: number;
-  @BelongsTo(() => Trivia)
-  trivia: Trivia;
+  answerId: number;
+  @BelongsTo(() => Answer)
+  answer: Answer;
 }
 
-export default TriviasAnswered;
+export default UsersAnswers;

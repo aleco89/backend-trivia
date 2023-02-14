@@ -9,15 +9,17 @@ import {
   ForeignKey,
   HasMany,
 } from "sequelize-typescript";
+import { Col } from "sequelize/types/utils";
 import Category from "./category";
 import Question from "./question";
-import TriviaAnswered from "./triviasanswered";
+import TriviaAnswered from "./userAnswers";
 
 interface TriviaAttributes {
   id: number;
   title: string;
   description: string;
   questionQuantity: number;
+  enable: boolean;
   categoryId: number;
   questions?: Question[];
   triviasAnswered?: TriviaAnswered[];
@@ -50,6 +52,11 @@ class Trivia
     allowNull: false,
   })
   questionQuantity: number;
+
+  @Column({
+    allowNull: false,
+  })
+  enable: boolean;
 
   @ForeignKey(() => Category)
   @Column

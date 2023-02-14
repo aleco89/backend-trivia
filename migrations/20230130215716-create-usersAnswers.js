@@ -3,23 +3,11 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("triviasAnswered", {
+    await queryInterface.createTable("usersAnswers", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
-      score: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
-      correctAnserws: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
-      incorrectAnswers: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       createdAt: {
@@ -31,19 +19,19 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
-    await queryInterface.addColumn("triviasAnswered", "userId", {
+    await queryInterface.addColumn("usersAnswers", "userId", {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: { model: "users", key: "id" },
     });
-    await queryInterface.addColumn("triviasAnswered", "triviaId", {
+    await queryInterface.addColumn("usersAnswers", "answerId", {
       type: Sequelize.INTEGER,
       allowNull: false,
-      references: { model: "trivias", key: "id" },
+      references: { model: "answers", key: "id" },
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("triviasAnswered");
+    await queryInterface.dropTable("usersAnswers");
   },
 };

@@ -4,7 +4,7 @@ import Answer from "../../models/answer";
 
 const getQuestion: RequestHandler = async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = Number(req.params.id);
     const questions = await Question.findAll({
       where: { triviaId: id },
       include: [{ model: Answer, attributes: ["id", "answer"] }],

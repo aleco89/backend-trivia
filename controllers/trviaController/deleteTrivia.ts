@@ -7,7 +7,7 @@ const deleteTrivia: RequestHandler = async (req, res) => {
     await Trivia.destroy({
       where: {
         id: id,
-        //incluir preguntas y respuestas
+        //incluir preguntas y respuestas. Borrar rtas en cascadas e indicar que borre las preguntas con triviaId= id pasado
       },
     });
   } catch (err) {

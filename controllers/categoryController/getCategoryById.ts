@@ -2,9 +2,9 @@ import { RequestHandler } from "express";
 import Category from "../../models/category";
 
 const getCategoryById: RequestHandler = async (req, res) => {
-  const id = Number(req.params.id);
   try {
-    const category = await Category.findByPk(id);
+    const id = Number(req.params.id);
+    const category = await Category.findOne({ where: { id: id } });
     if (category === null) {
       console.log("este es el id " + id);
       res.status(400).json({ message: "category does not exists" });
@@ -14,6 +14,21 @@ const getCategoryById: RequestHandler = async (req, res) => {
   } catch (err) {
     return res.status(400).json(err);
   }
+  /* try {
+    const id = Number(req.params.id);
+    const category = await Category.findByPk(id);
+    if (category === null) {
+      console.log("este es el id " + id);
+      res.status(400).json({ message: "category does not exists" });
+    } else {
+      return res.status(200).json(category);
+    }
+  } catch (err) {
+    return res.status(400).json(err);
+  } */
 };
+/*
+  NO FUNCIONA
+*/
 
 export default getCategoryById;

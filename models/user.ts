@@ -7,7 +7,7 @@ import {
   PrimaryKey,
   HasMany,
 } from "sequelize-typescript";
-import TriviasAnswered from "./triviasanswered";
+import TriviasAnswered from "./userAnswers";
 
 interface UserAttributes {
   id: number;

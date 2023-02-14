@@ -1,5 +1,5 @@
 import { Router } from "express";
-import checkAnswer from "../controllers/answerController/checkAnswer";
+import checkAnswer from "../controllers/usersAnswersController/checkAnswer";
 
 const answerRouter = Router();
 

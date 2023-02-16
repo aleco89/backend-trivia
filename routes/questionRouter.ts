@@ -4,8 +4,7 @@ import getQuestion from "../controllers/questionController/getQuestion";
 
 const questionRouter = Router();
 
-questionRouter.use("/new", createQuestion);
-questionRouter.use("/:id", getQuestion);
-//questionRouter.use("/:id", getQuestionByTriviaId);
+questionRouter.post("/new", createQuestion);
+questionRouter.get("/:id", getQuestion);
 
 export default questionRouter;

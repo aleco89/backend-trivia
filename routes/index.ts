@@ -4,6 +4,7 @@ import triviaRouter from "./triviaRouter";
 import categoryRouter from "./categoryRouter";
 import questionRouter from "./questionRouter";
 import answerRouter from "./answerRouter";
+import authRouter from "./authRouter";
 
 const appRouter = Router();
 
@@ -13,5 +14,6 @@ appRouter.use("/trivia", triviaRouter);
 appRouter.use("/category", categoryRouter);
 appRouter.use("/question", questionRouter);
 appRouter.use("/answer", answerRouter);
+appRouter.use("/auth", authRouter);
 
 export default appRouter;

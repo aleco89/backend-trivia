@@ -8,19 +8,20 @@ import {
   ForeignKey,
   BelongsTo,
 } from "sequelize-typescript";
-import Answer from "./answer";
 import User from "./user";
+import Answer from "./answer";
 
 interface UsersAnswersAttributes {
   id: number;
   userId: number;
   answerId: number;
 }
+
 interface UsersAnswersCreationAttributes
   extends Optional<UsersAnswersAttributes, "id"> {}
 
 @Table({
-  tableName: "usersResponses",
+  tableName: "usersAnswers",
 })
 class UsersAnswers
   extends Model<UsersAnswersAttributes, UsersAnswersCreationAttributes>

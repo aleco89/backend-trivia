@@ -46,7 +46,7 @@ class Question
   @BelongsTo(() => Trivia)
   trivia: Trivia;
 
-  @HasMany(() => Answer)
+  @HasMany(() => Answer, { onDelete: "cascade" })
   answers: Answer[];
 }
 

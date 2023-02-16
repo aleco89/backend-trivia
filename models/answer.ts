@@ -7,9 +7,11 @@ import {
   PrimaryKey,
   ForeignKey,
   BelongsTo,
+  HasMany,
 } from "sequelize-typescript";
 import Question from "./question";
 import QuestionCreationAttributes from "./question";
+import UsersAnswers from "./usersAnswers";
 
 interface AnswerAttributes {
   id: number;
@@ -17,6 +19,7 @@ interface AnswerAttributes {
   isCorrect: boolean;
   questionId: number;
   question?: QuestionCreationAttributes;
+  usersAnswers?: UsersAnswers[];
 }
 interface AnswerCreationAttributes extends Optional<AnswerAttributes, "id"> {}
 
@@ -45,6 +48,9 @@ class Answer
   questionId: number;
   @BelongsTo(() => Question)
   question: Question;
+
+  @HasMany(() => UsersAnswers, { onDelete: "cascade" })
+  usersAnswers: UsersAnswers[];
 }
 
 export default Answer;

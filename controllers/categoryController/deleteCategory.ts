@@ -14,8 +14,5 @@ const deleteCategory: RequestHandler = async (req, res) => {
     return res.status(400).json(err);
   }
 };
-/*
-no funciona
-*/
 
 export default deleteCategory;

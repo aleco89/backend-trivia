@@ -9,20 +9,17 @@ import {
   ForeignKey,
   HasMany,
 } from "sequelize-typescript";
-import { Col } from "sequelize/types/utils";
 import Category from "./category";
 import Question from "./question";
-import TriviaAnswered from "./userAnswers";
 
 interface TriviaAttributes {
   id: number;
   title: string;
   description: string;
-  questionQuantity: number;
-  enable: boolean;
+  questionQuantity?: number;
   categoryId: number;
+  published: boolean;
   questions?: Question[];
-  triviasAnswered?: TriviaAnswered[];
 }
 interface TriviaCreationAttributes extends Optional<TriviaAttributes, "id"> {}
 
@@ -56,7 +53,7 @@ class Trivia
   @Column({
     allowNull: false,
   })
-  enable: boolean;
+  published: boolean;
 
   @ForeignKey(() => Category)
   @Column
@@ -64,10 +61,8 @@ class Trivia
   @BelongsTo(() => Category)
   category: Category;
 
-  @HasMany(() => Question)
+  @HasMany(() => Question, { onDelete: "cascade" })
   questions: Question[];
-  @HasMany(() => TriviaAnswered)
-  triviasAnswered: TriviaAnswered[];
 }
 
 export default Trivia;

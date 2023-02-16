@@ -1,12 +1,14 @@
 import { Router } from "express";
 import createTrivia from "../controllers/trviaController/createTrivia";
+import deleteTrivia from "../controllers/trviaController/deleteTrivia";
 import getAllTrivias from "../controllers/trviaController/getAllTrivia";
-import getTriviaById from "../controllers/trviaController/getTriviaById";
+import updateTrivia from "../controllers/trviaController/updateTrivia";
 
 const triviaRouter = Router();
 
-triviaRouter.use("/new", createTrivia);
-triviaRouter.use("/", getAllTrivias);
-//triviaRouter.use("/:id", getTriviaById);
+triviaRouter.post("/new", createTrivia);
+triviaRouter.post("/edit/:id", updateTrivia);
+triviaRouter.delete("/:id", deleteTrivia);
+triviaRouter.get("/", getAllTrivias);
 
 export default triviaRouter;

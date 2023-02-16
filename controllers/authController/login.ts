@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
-
 import bcrypt from "bcrypt";
 import User from "../../models/user";
+import jwt from "jsonwebtoken";
 const saltRounds = 10;
 
 type ReqBody = {
@@ -9,20 +9,30 @@ type ReqBody = {
   password: string;
 };
 
-const login: RequestHandler = (req, res) => {
-  const logUser = req.body as ReqBody;
+const login: RequestHandler = async (req, res) => {
+  try {
+    const logUser = req.body as ReqBody;
 
-  bcrypt.genSalt(saltRounds, function (err, salt) {
-    bcrypt.hash(logUser.password, salt, async function (err, hash) {
-      const user = await User.findOne({
-        where: {
-          email: logUser.email,
-          password: hash,
-        },
-      });
+    const user = (await User.findOne({
+      where: {
+        email: logUser.email,
+      },
+    })) as User;
+
+    if (!user) {
+      return res.status(400).json({ message: "user or password not valid" });
+    }
+    const userMatch = bcrypt.compareSync(logUser.password, user.password);
+
+    if (userMatch) {
+      const token = jwt.sign(user, "shhhhh");
       return res.status(200).json(user);
-    });
-  });
+    } else {
+      return res.status(400).json({ message: "user or password not valid" });
+    }
+  } catch (error) {
+    return res.status(400).json(error);
+  }
 };
 
 export default login;

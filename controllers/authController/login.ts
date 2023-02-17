@@ -27,10 +27,10 @@ const login: RequestHandler = async (req, res) => {
     if (userMatch) {
       const token = jwt.sign(
         {
+          id: user.id,
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
-          avatar: user.avatar,
         },
         "lALigadelaEsculIta"
       );

@@ -8,7 +8,7 @@ const upateTrivia: RequestHandler = async (req, res) => {
     const id = Number(req.params.id);
     const toUpdate = req.body as TriviaCreationAttributes;
     const trivia = (await getTriviaById(id)) as Trivia;
-    if (trivia == null)
+    if (!trivia)
       return res.status(400).json({
         message: "can not edit the trivia because it does not exists",
       });

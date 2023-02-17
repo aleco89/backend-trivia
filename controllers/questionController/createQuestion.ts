@@ -10,8 +10,8 @@ const createQuestion: RequestHandler = async (req, res) => {
       include: [Answer],
     });
     return res.status(201).json(question);
-  } catch (err) {
-    return res.status(400).json(err);
+  } catch (error) {
+    return res.status(400).json(error);
   }
 };
 

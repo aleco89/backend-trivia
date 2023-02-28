@@ -1,10 +1,12 @@
 import { Router } from "express";
-import createUser from "../controllers/userController/createUser";
 import getUserById from "../controllers/userController/getUserById";
+import register from "../controllers/authController/register";
+import checkLogin from "../middlewares/checkLogin";
+import updateUser from "../controllers/userController/updateUser";
 
 const userRouter = Router();
 
-userRouter.use("/new", createUser);
-userRouter.use("/:Id", getUserById);
+userRouter.put("/edit/:Id", checkLogin, updateUser);
+userRouter.get("/:Id", checkLogin, getUserById);
 
 export default userRouter;

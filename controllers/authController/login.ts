@@ -32,7 +32,7 @@ const login: RequestHandler = async (req, res) => {
           lastName: user.lastName,
           email: user.email,
         },
-        "lALigadelaEsculIta"
+        "lALigadelaEscuelIta"
       );
       return res.status(200).json({ payload: { token } });
     } else {

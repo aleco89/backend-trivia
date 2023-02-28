@@ -14,13 +14,11 @@ const createQuestion: RequestHandler = async (req, res) => {
       return res.status(400).json({
         message: "can not edit the question because it does not exists",
       });
-    }
+    } /*
     if ((await checkPublished(toUpdateQuestion.triviaId)) == false) {
       const updatedQuestion = await toUpdateQuestion.update(
         questionAttributes,
-        questionAttributes,
-        { include: [Answer] },
-        { where: { id: questionAttributes.id } }
+        { include: [Answer] }
       );
       return res.status(200).json(updatedQuestion);
     } else {
@@ -28,7 +26,7 @@ const createQuestion: RequestHandler = async (req, res) => {
         message:
           "can not edit the question beacause the trivia was already published",
       });
-    }
+    }*/
   } catch (error) {
     return res.status(400).json(error);
   }

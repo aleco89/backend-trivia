@@ -7,9 +7,11 @@ const createUsersAnswers: RequestHandler = async (req, res) => {
   try {
     const userAnswer = req.body as UsersAnswersAttributes;
     await UsersAnswers.create(userAnswer);
-    const isCorrect = Answer.findByPk(userAnswer.answerId, {
+    console.log(userAnswer);
+    const isCorrect = await Answer.findByPk(userAnswer.answerId, {
       attributes: ["isCorrect"],
     });
+    console.log(isCorrect);
     return res.status(201).json(isCorrect);
   } catch (err) {
     return res.status(400).json(err);

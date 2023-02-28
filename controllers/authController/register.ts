@@ -56,7 +56,8 @@ const register: RequestHandler = (req, res) => {
 
     return res.status(201).json({ message: "user creation succesfull" });
   } catch (error) {
-    return res.status(400).json(error);
+    const err = error as { message?: string };
+    res.status(400).json({ message: err?.message });
   }
 };
 

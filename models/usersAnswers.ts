@@ -34,21 +34,6 @@ class UsersAnswers
   })
   id: number;
 
-  @Column({
-    allowNull: false,
-  })
-  score: number;
-
-  @Column({
-    allowNull: false,
-  })
-  correctAnswers: number;
-
-  @Column({
-    allowNull: false,
-  })
-  incorrectAnswers: number;
-
   @ForeignKey(() => User)
   @Column
   userId: number;

@@ -20,8 +20,9 @@ const upateTrivia: RequestHandler = async (req, res) => {
         message: "can not edit trivia beacause it was already published",
       });
     }
-  } catch (err) {
-    return res.status(400).json(err);
+  } catch (error) {
+    const err = error as { message?: string };
+    res.status(400).json({ message: err?.message });
   }
 };
 

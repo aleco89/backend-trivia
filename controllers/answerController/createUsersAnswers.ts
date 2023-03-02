@@ -7,7 +7,6 @@ const createUsersAnswers: RequestHandler = async (req, res) => {
   try {
     const userAnswer = req.body as UsersAnswersAttributes;
     await UsersAnswers.create(userAnswer);
-    console.log(userAnswer);
     const isCorrect = await Answer.findByPk(userAnswer.answerId, {
       attributes: ["isCorrect"],
     });

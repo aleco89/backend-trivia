@@ -15,7 +15,4 @@ const createQuestion: RequestHandler = async (req, res) => {
   }
 };
 
-/*
-    Funcionando OK!
-*/
 export default createQuestion;

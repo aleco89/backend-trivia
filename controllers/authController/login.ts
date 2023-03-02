@@ -31,6 +31,7 @@ const login: RequestHandler = async (req, res) => {
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
+          admin: user.admin,
         },
         "lALigadelaEscuelIta"
       );

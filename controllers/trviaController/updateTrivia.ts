@@ -7,7 +7,7 @@ const upateTrivia: RequestHandler = async (req, res) => {
   try {
     const id = Number(req.params.id);
     const toUpdate = req.body as TriviaCreationAttributes;
-    const trivia = (await getTriviaById(id)) as Trivia;
+    const trivia = (await Trivia.findByPk(id)) as Trivia;
     if (!trivia)
       return res.status(400).json({
         message: "can not edit the trivia because it does not exists",
@@ -20,9 +20,8 @@ const upateTrivia: RequestHandler = async (req, res) => {
         message: "can not edit trivia beacause it was already published",
       });
     }
-  } catch (error) {
-    const err = error as { message?: string };
-    res.status(400).json({ message: err?.message });
+  } catch (err) {
+    return res.status(400).json(err);
   }
 };
 
